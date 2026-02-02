@@ -323,6 +323,23 @@ main {
   color: var(--text);
 }
 
+.closing-tiktok {
+  margin-top: var(--space-md) !important;
+  font-size: 0.9rem;
+  color: var(--text-soft);
+}
+
+.closing-tiktok a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s var(--ease-soft);
+}
+
+.closing-tiktok a:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+
 /* ---------- Responsive (mobile-first; tweaks for larger screens) ---------- */
 @media (min-width: 600px) {
   .gallery-grid {
