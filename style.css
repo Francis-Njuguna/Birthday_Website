@@ -1,0 +1,307 @@
+/* ============================================
+   Birthday Site — Soft pastel, romantic, minimal
+   CUSTOMIZE: Colors and fonts are grouped below.
+   ============================================ */
+
+/* ---------- Design tokens (Maureen’s favourite: blue) ---------- */
+:root {
+  /* Soft blue pastel — warm, not white */
+  --cream: #e8eef5;
+  --blush: #dce6f0;
+  --blush-deep: #c8d8e8;
+  --lavender: #d4e0ee;
+  --lavender-soft: #e2eaf2;
+  --text: #3d4a56;
+  --text-soft: #5c6b78;
+  --accent: #8fa4b8;
+
+  /* Typography */
+  --font-heading: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Outfit", system-ui, sans-serif;
+
+  /* Spacing & rhythm */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+
+  /* Transitions (slow-dance feel) */
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration: 0.6s;
+}
+
+/* ---------- Reset & base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Music control (top-right) ---------- */
+.music-control {
+  position: fixed;
+  top: var(--space-md);
+  right: var(--space-md);
+  z-index: 100;
+}
+
+#music-toggle {
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  border-radius: 50%;
+  background: var(--blush);
+  color: var(--text-soft);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: background 0.3s var(--ease-soft), transform 0.2s var(--ease-soft);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+#music-toggle:hover {
+  background: var(--blush-deep);
+  transform: scale(1.05);
+}
+
+#music-toggle .icon-pause {
+  display: none;
+}
+
+#music-toggle[aria-pressed="true"] .icon-play {
+  display: none;
+}
+
+#music-toggle[aria-pressed="true"] .icon-pause {
+  display: inline;
+}
+
+/* ---------- Layout ---------- */
+main {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.container {
+  width: 100%;
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-xl) var(--space-md);
+  background: linear-gradient(180deg, var(--cream) 0%, var(--lavender-soft) 50%, var(--cream) 100%);
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
+  line-height: 1.35;
+  color: var(--text);
+  margin: 0 0 var(--space-md);
+  opacity: 0;
+  transform: translateY(1.5rem);
+  animation: fadeUp 1s var(--ease-soft) 0.2s forwards;
+}
+
+.hero-sub {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--text-soft);
+  margin: 0;
+  font-style: italic;
+  opacity: 0;
+  transform: translateY(1rem);
+  animation: fadeUp 0.9s var(--ease-soft) 0.5s forwards;
+}
+
+/* ---------- Section defaults ---------- */
+.section {
+  padding: var(--space-2xl) 0;
+  opacity: 0;
+  transform: translateY(1.25rem);
+}
+
+.section.visible {
+  animation: fadeUp 0.9s var(--ease-soft) forwards;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: var(--text);
+  margin: 0 0 var(--space-lg);
+  text-align: center;
+}
+
+/* ---------- Animations ---------- */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Poetic message ---------- */
+.section.poetic {
+  background: var(--blush);
+}
+
+.poem-line {
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 3vw, 1.35rem);
+  font-style: italic;
+  color: var(--text);
+  margin: 0 0 var(--space-xs);
+}
+
+.poem-para {
+  margin: var(--space-lg) 0 0;
+  color: var(--text-soft);
+  font-size: 1rem;
+}
+
+/* ---------- Memories / Us ---------- */
+.section.memories {
+  background: var(--cream);
+}
+
+.memories-text p {
+  margin: 0 0 var(--space-md);
+  color: var(--text);
+}
+
+.memories-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Dance & Joy ---------- */
+.section.dance {
+  background: var(--lavender-soft);
+}
+
+.dance-block {
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.dance-block p {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--text);
+  margin: 0;
+}
+
+/* ---------- Photo gallery ---------- */
+.section.gallery {
+  background: var(--cream);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+
+.gallery-item {
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 1;
+  transition: transform 0.3s var(--ease-soft);
+}
+
+.gallery-item:hover {
+  transform: scale(1.02);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------- Final love note ---------- */
+.section.closing {
+  background: linear-gradient(180deg, var(--blush) 0%, var(--lavender-soft) 100%);
+  padding-bottom: var(--space-2xl);
+}
+
+.closing-note {
+  text-align: center;
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+.closing-note p {
+  margin: 0 0 var(--space-md);
+  color: var(--text);
+}
+
+.closing-wish {
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 3.5vw, 1.75rem);
+  font-weight: 400;
+  margin: var(--space-lg) 0 var(--space-md) !important;
+}
+
+.closing-sign {
+  font-style: italic;
+  color: var(--text-soft);
+  margin-top: var(--space-lg) !important;
+}
+
+#signature {
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* ---------- Responsive (mobile-first; tweaks for larger screens) ---------- */
+@media (min-width: 600px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+}
+
+@media (min-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .hero {
+    padding: var(--space-2xl) var(--space-md);
+  }
+}

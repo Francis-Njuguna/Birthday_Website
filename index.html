@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 20th Birthday — Maureen Otieno</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ========== MUSIC CONTROL (no autoplay) ========== -->
+  <div class="music-control" aria-label="Background music">
+    <button id="music-toggle" type="button" aria-pressed="false" aria-label="Play background music">
+      <span class="icon-play" aria-hidden="true">▶</span>
+      <span class="icon-pause" aria-hidden="true">❚❚</span>
+    </button>
+  </div>
+  <!--
+    AUDIO: Put your music file in this project folder (same folder as index.html).
+    Name it music.mp3 — or change the src below to your filename (e.g. src="my-song.mp3").
+    See AUDIO-README.txt in this folder for where to download free romantic/dance-friendly music.
+  -->
+  <audio id="bg-music" loop preload="metadata">
+    <source src="music.mp3" type="audio/mpeg">
+    <source src="music.ogg" type="audio/ogg">
+  </audio>
+
+  <main>
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="hero">
+      <h1 class="hero-title">
+        Twenty looks beautiful on you —<br>
+        a new rhythm, a new chapter, the same magic. ✨
+      </h1>
+      <p class="hero-sub">Maureen, you turn every day into a dance. 🎂💙</p>
+    </section>
+
+    <!-- ========== POETIC MESSAGE ========== -->
+    <section class="section poetic" id="poetic">
+      <div class="container">
+        <p class="poem-line">You don’t just dance to music —</p>
+        <p class="poem-line">you dance through moments,</p>
+        <p class="poem-line">through rooms,</p>
+        <p class="poem-line">through the world, leaving a little light everywhere you go.</p>
+        <p class="poem-para">
+          At twenty, you’re already the one who turns ordinary evenings into something warm and alive. You bring joy, movement, and a kind of light that makes everything feel a little softer, a little brighter. <em>Some people wait for the music — you are the music.</em> 🌟
+        </p>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT MAUREEN ========== -->
+    <section class="section memories" id="memories">
+      <div class="container">
+        <h2 class="section-title">Maureen 💫</h2>
+        <div class="memories-text">
+          <p>
+            She’s the one who fills rooms with laughter and late talks that never seem to end. The silly thoughts, the big dreams, the “remember when” moments — she holds them and shares them with everyone lucky enough to be in her orbit.
+          </p>
+          <p>
+            She’s the kind of person you can read without a word — and the kind who makes you feel at home just by being there. Her smile still catches the light; her presence turns any chapter into something worth living.
+          </p>
+          <p>
+            Midnight conversations, dancing in the kitchen, that laugh that makes everything okay — that’s Maureen. Here’s to her: her warmth, her spirit, and the way she makes every day feel like a gift. 🎵
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== DANCE & JOY ========== -->
+    <section class="section dance" id="dance">
+      <div class="container">
+        <div class="dance-block">
+          <p class="poem-line">She doesn’t wait for the beat — she <em>is</em> the beat. 💃</p>
+          <p>
+            Maureen moves through the world with rhythm and grace — not just on a dance floor, but in the way she lives. Every step is a little bit of freedom, a little bit of joy. She turns music into motion, and motion into magic. <em>Here’s to the way she dances through life — unapologetically, beautifully, hers.</em>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PHOTO GALLERY ========== -->
+    <section class="section gallery" id="gallery">
+      <div class="container">
+        <h2 class="section-title">Moments of Her ✨</h2>
+        <div class="gallery-grid">
+          <!-- CUSTOMIZE: Replace src with your photo paths; keep or remove items -->
+          <div class="gallery-item"><img src="https://placehold.co/600x600/e6eef5/6b8ba4?text=1" alt="Memory 1"></div>
+          <div class="gallery-item"><img src="https://placehold.co/600x600/e0e8f2/6b8ba4?text=2" alt="Memory 2"></div>
+          <div class="gallery-item"><img src="https://placehold.co/600x600/e6eef5/6b8ba4?text=3" alt="Memory 3"></div>
+          <div class="gallery-item"><img src="https://placehold.co/600x600/e0e8f2/6b8ba4?text=4" alt="Memory 4"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FINAL LOVE NOTE ========== -->
+    <section class="section closing" id="closing">
+      <div class="container">
+        <div class="closing-note">
+          <p>
+            She’s the light in the room and the rhythm in the air. Thank you, Maureen, for being you — for every laugh, every dance, every moment you make brighter. 💙
+          </p>
+          <p class="poem-line">Twenty years of becoming — and she’s only just begun.</p>
+          <p class="closing-wish">Happy 20th Birthday, Maureen, my love. 🎂✨</p>
+          <p class="closing-sign">— <span id="signature">Your Name</span></p>
+          <!-- CUSTOMIZE: Change "Your Name" above to your name -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
