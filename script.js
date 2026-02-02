@@ -1,6 +1,6 @@
 /**
  * Birthday site — minimal interactions
- * - Background music: play/pause (no autoplay)
+ * - Background music: starts on page load, play/pause button
  * - Scroll-triggered fade-in for sections
  * - Subtle hover handled in CSS
  */
@@ -8,22 +8,37 @@
 (function () {
   'use strict';
 
-  // ---------- Music control (no autoplay) ----------
+  // ---------- Music control (starts on visit, then play/pause) ----------
   var musicToggle = document.getElementById('music-toggle');
   var bgMusic = document.getElementById('bg-music');
 
+  function setPlayingState(playing) {
+    if (musicToggle) {
+      musicToggle.setAttribute('aria-pressed', playing ? 'true' : 'false');
+    }
+  }
+
   if (musicToggle && bgMusic) {
+    // Start playing when the page loads (browsers may block; then user can click play)
+    window.addEventListener('load', function () {
+      bgMusic.play()
+        .then(function () {
+          setPlayingState(true);
+        })
+        .catch(function () {
+          setPlayingState(false);
+        });
+    });
+
     musicToggle.addEventListener('click', function () {
       var isPlaying = !bgMusic.paused;
 
       if (isPlaying) {
         bgMusic.pause();
-        musicToggle.setAttribute('aria-pressed', 'false');
+        setPlayingState(false);
       } else {
-        bgMusic.play().catch(function () {
-          // Ignore autoplay policy errors; user must click to play
-        });
-        musicToggle.setAttribute('aria-pressed', 'true');
+        bgMusic.play().catch(function () {});
+        setPlayingState(true);
       }
     });
   }
