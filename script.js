@@ -1,6 +1,7 @@
 /**
  * Birthday site — minimal interactions
  * - Background music: starts on page load, play/pause button
+ * - When a video plays, music pauses; when video ends/pauses, music resumes
  * - Scroll-triggered fade-in for sections
  * - Subtle hover handled in CSS
  */
@@ -11,6 +12,7 @@
   // ---------- Music control (starts on visit, then play/pause) ----------
   var musicToggle = document.getElementById('music-toggle');
   var bgMusic = document.getElementById('bg-music');
+  var musicWasPlayingBeforeVideo = false;
 
   function setPlayingState(playing) {
     if (musicToggle) {
@@ -42,6 +44,37 @@
       }
     });
   }
+
+  // ---------- Pause music when video plays; resume when video ends or is paused ----------
+  (function () {
+    var videos = document.querySelectorAll('video');
+    function anyVideoPlaying() {
+      for (var i = 0; i < videos.length; i++) {
+        if (!videos[i].paused) return true;
+      }
+      return false;
+    }
+    function tryResumeMusic() {
+      if (!anyVideoPlaying() && musicWasPlayingBeforeVideo && bgMusic) {
+        musicWasPlayingBeforeVideo = false;
+        bgMusic.play().catch(function () {});
+        setPlayingState(true);
+      }
+    }
+    for (var j = 0; j < videos.length; j++) {
+      (function (video) {
+        video.addEventListener('play', function () {
+          if (bgMusic && !bgMusic.paused) {
+            musicWasPlayingBeforeVideo = true;
+            bgMusic.pause();
+            setPlayingState(false);
+          }
+        });
+        video.addEventListener('pause', tryResumeMusic);
+        video.addEventListener('ended', tryResumeMusic);
+      })(videos[j]);
+    }
+  })();
 
   // ---------- Scroll-triggered section visibility ----------
   var sections = document.querySelectorAll('.section');
